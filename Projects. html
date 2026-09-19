@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Portfolio | Birch Interiors LLC UAE</title>
+
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #1a1e21;
+      --gold: #b59b75;
+      --gold-dark: #9e835f;
+      --text-main: #2b3035;
+      --text-muted: #6c757d;
+      --bg-body: #fcfbfa;
+      --bg-white: #ffffff;
+      --bg-cream: #f4f1eb;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --transition: all 0.35s ease;
+      --radius: 8px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif !important; }
+    body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.65; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-padding { padding: 6rem 0; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem; padding: 0.85rem 2rem; border-radius: var(--radius); font-size: 0.95rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: var(--transition); }
+    .btn-primary { background: var(--gold); color: #fff; }
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-3px); }
+
+    .topbar { background: var(--bg-white); color: var(--text-muted); font-size: 0.85rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border-color); }
+    .topbar .container { display: flex; justify-content: space-between; align-items: center; }
+    .topbar-info, .topbar-socials { display: flex; align-items: center; gap: 1.5rem; }
+    .topbar a:hover { color: var(--gold); }
+
+    .site-header { position: sticky; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.04); }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 85px; }
+    .logo-link { display: flex; align-items: center; gap: 0.85rem; }
+    .brand-logo-img { width: 48px; height: 48px; object-fit: contain; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .logo-text-wrap { display: flex; flex-direction: column; }
+    .logo-title { font-size: 1.25rem; font-weight: 800; color: var(--primary); line-height: 1.1; }
+    .logo-subtitle { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; color: var(--gold); }
+
+    .navbar-menu { display: flex; align-items: center; gap: 2rem; }
+    .nav-link { font-size: 0.95rem; font-weight: 500; color: var(--text-main); position: relative; padding: 0.4rem 0; }
+    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: var(--transition); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link:hover, .nav-link.active { color: var(--gold); }
+    .mobile-nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+
+    .mobile-drawer { position: fixed; top: 0; right: -100%; width: 80%; max-width: 360px; height: 100vh; background: #fff; z-index: 1050; padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); box-shadow: -10px 0 30px rgba(0,0,0,0.1); }
+    .mobile-drawer.open { right: 0; }
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1040; opacity: 0; visibility: hidden; transition: var(--transition); }
+    .drawer-overlay.active { opacity: 1; visibility: visible; }
+    .mobile-drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .mobile-drawer-close { background: none; border: none; font-size: 1.4rem; cursor: pointer; }
+    .mobile-drawer-links { display: flex; flex-direction: column; gap: 1.25rem; }
+    .mobile-drawer-links a { font-size: 1.1rem; font-weight: 600; display: flex; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid #f1f1f1; }
+
+    .page-banner { background: linear-gradient(135deg, rgba(244, 241, 235, 0.95), rgba(252, 251, 250, 0.9)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover; padding: 5rem 0; color: var(--primary); text-align: center; border-bottom: 1px solid var(--border-color); }
+    .page-banner h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .breadcrumbs { display: flex; justify-content: center; gap: 0.5rem; font-size: 0.9rem; color: var(--gold-dark); }
+    .breadcrumbs a { color: var(--primary); }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .project-card { position: relative; border-radius: var(--radius); overflow: hidden; height: 380px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+    .project-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+    .project-card:hover .project-img { transform: scale(1.08); }
+    .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 24, 27, 0.95) 0%, rgba(20, 24, 27, 0.2) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; opacity: 0; transition: var(--transition); transform: translateY(15px); }
+    .project-card:hover .project-overlay { opacity: 1; transform: translateY(0); }
+    .project-category { font-size: 0.75rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; }
+    .project-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .project-loc { font-size: 0.85rem; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 0.4rem; }
+
+    footer.site-footer { background: #1a1e21; color: rgba(255,255,255,0.75); padding-top: 5rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr; gap: 3rem; padding-bottom: 4rem; }
+    .footer-social-icons { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+    .footer-social-icons a { width: 40px; height: 40px; border-radius: var(--radius); background: rgba(255,255,255,0.08); color: #fff; display: grid; place-items: center; }
+    .footer-social-icons a:hover { background: var(--gold); }
+    .footer-col h4 { color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: 1.5rem; position: relative; }
+    .footer-col h4::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 30px; height: 2px; background: var(--gold); }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact-list { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-contact-item { display: flex; gap: 0.85rem; font-size: 0.9rem; }
+    .footer-contact-item i { color: var(--gold); margin-top: 0.25rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 0; font-size: 0.85rem; }
+    .footer-bottom-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .floating-whatsapp { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; display: grid; place-items: center; font-size: 1.85rem; z-index: 999; }
+
+    @media (max-width: 1024px) { .projects-grid, .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .topbar, .navbar-menu, .nav-cta { display: none; }
+      .mobile-nav-toggle { display: block; }
+      .projects-grid, .footer-grid { grid-template-columns: 1fr; }
+      .section-padding { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <a href="tel:+971582765896"><i class="fas fa-phone-alt"></i> +971 58 276 5896</a>
+        <a href="mailto:info@birchinteriors.ae"><i class="fas fa-envelope"></i> info@birchinteriors.ae</a>
+        <span><i class="fas fa-map-marker-alt"></i> Warehouse No. 07, Al Jerf Industrial 01, Ajman, UAE</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://www.instagram.com/birchinteriors.ae" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/birchinteriors" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/971582765896" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="logo.png" alt="Birch Interiors Logo" class="brand-logo-img">
+        <div class="logo-text-wrap">
+          <span class="logo-title">BIRCH</span>
+          <span class="logo-subtitle">Interiors LLC</span>
+        </div>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="navbar-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="projects.html" class="nav-link active">Projects</a></li>
+          <li><a href="team.html" class="nav-link">Team</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://wa.me/971582765896" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Inquire Now</a>
+      </div>
+      <button class="mobile-nav-toggle" id="mobileNavToggle"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="mobile-drawer-header">
+        <div class="logo-link">
+          <img src="logo.png" alt="Birch Interiors Logo" class="brand-logo-img" style="width:36px;height:36px;">
+          <div class="logo-text-wrap">
+            <span class="logo-title" style="font-size:1.1rem;">BIRCH</span>
+            <span class="logo-subtitle">Interiors LLC</span>
+          </div>
+        </div>
+        <button class="mobile-drawer-close" id="mobileDrawerClose"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="mobile-drawer-links">
+        <li><a href="index.html">Home <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="about.html">About <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="services.html">Services <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="projects.html">Projects <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="team.html">Team <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="contact.html">Contact <i class="fas fa-chevron-right"></i></a></li>
+      </ul>
+    </div>
+    <a href="https://wa.me/971582765896" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+  </aside>
+
+  <section class="page-banner">
+    <div class="container">
+      <h1>Signature Projects</h1>
+      <div class="breadcrumbs">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a> <span>/</span> <span>Projects</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container">
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Executive Corporate HQ" class="project-img">
+          <div class="project-overlay">
+            <span class="project-category">Corporate Fit-Out</span>
+            <h3 class="project-title">The Executive Tower Office</h3>
+            <p class="project-loc"><i class="fas fa-map-pin"></i> Business Bay, Dubai</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Palm Jumeirah Luxury Villa" class="project-img">
+          <div class="project-overlay">
+            <span class="project-category">Residential Joinery</span>
+            <h3 class="project-title">Signature Palm Beach Villa</h3>
+            <p class="project-loc"><i class="fas fa-map-pin"></i> Palm Jumeirah, Dubai</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Specialty Cafe Fit-Out" class="project-img">
+          <div class="project-overlay">
+            <span class="project-category">Hospitality Fit-Out</span>
+            <h3 class="project-title">Artisan Specialty Cafe</h3>
+            <p class="project-loc"><i class="fas fa-map-pin"></i> Al Jerf, Ajman</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Marina Penthouse" class="project-img">
+          <div class="project-overlay">
+            <span class="project-category">High-End Residential</span>
+            <h3 class="project-title">Marina Coast Penthouse</h3>
+            <p class="project-loc"><i class="fas fa-map-pin"></i> Dubai Marina</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80" alt="Retail Fashion Boutique" class="project-img">
+          <div class="project-overlay">
+            <span class="project-category">Retail Design</span>
+            <h3 class="project-title">Maison Haute Horlogerie</h3>
+            <p class="project-loc"><i class="fas fa-map-pin"></i> Downtown Dubai</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Contemporary Minimalist Residence" class="project-img">
+          <div class="project-overlay">
+            <span class="project-category">Architectural Joinery</span>
+            <h3 class="project-title">Minimalist Residence Fit-Out</h3>
+            <p class="project-loc"><i class="fas fa-map-pin"></i> Al Zahia, Sharjah</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+            <img src="logo.png" alt="Birch Interiors" style="width:40px;height:40px;object-fit:contain;border-radius:50%;">
+            <span style="font-weight:700;font-size:1.2rem;color:#fff;">BIRCH INTERIORS</span>
+          </div>
+          <p>Turnkey interior fit-out contractors and joinery manufacturers based in Ajman, delivering projects across Dubai, Abu Dhabi, Sharjah, and all UAE emirates.</p>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/birchinteriors.ae" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/birchinteriors" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/971582765896" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-angle-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-angle-right"></i> About Us</a></li>
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+            <li><a href="projects.html"><i class="fas fa-angle-right"></i> Projects</a></li>
+            <li><a href="team.html"><i class="fas fa-angle-right"></i> Team</a></li>
+            <li><a href="contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Our Specializations</h4>
+          <ul class="footer-links">
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Commercial Fit-Out</a></li>
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Custom Joinery Works</a></li>
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Luxury Residential Fit-Out</a></li>
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Retail & Hospitality</a></li>
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Authority Approvals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Details</h4>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Warehouse No. 07, Al Jerf Industrial 01, Ajman, UAE</span></div>
+            <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+971582765896">+971 58 276 5896</a></div>
+            <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:info@birchinteriors.ae">info@birchinteriors.ae</a></div>
+            <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/971582765896" target="_blank" rel="noopener noreferrer">WhatsApp Support</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-container">
+          <p>&copy; <span id="currentYear"></span> Birch Interiors LLC. All Rights Reserved.</p>
+          <p>Ajman & Dubai, United Arab Emirates</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/971582765896" target="_blank" rel="noopener noreferrer" class="floating-whatsapp"><i class="fab fa-whatsapp"></i></a>
+
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawerClose = document.getElementById('mobileDrawerClose');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function toggleDrawer(open) {
+      if (open) {
+        mobileDrawer.classList.add('open');
+        drawerOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileDrawer.classList.remove('open');
+        drawerOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    mobileNavToggle.addEventListener('click', () => toggleDrawer(true));
+    mobileDrawerClose.addEventListener('click', () => toggleDrawer(false));
+    drawerOverlay.addEventListener('click', () => toggleDrawer(false));
+  </script>
+</body>
+</html>
